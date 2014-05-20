@@ -1,76 +1,185 @@
-function Mario () {
-	this.hp = 15;
 
- 	this.primaryAttack = function(target) {
-  	// function exists purely for side affects
-  	target.hp = target.hp - 10;
+function teela () {
+  this.hp = 45;
+
+  this.attack = function(target) {
+  	target.hp = target.hp - 5;
   }
-  this.specialAttack = function(target) {
-  	if target.spikey == true {
-  		this.hp = 0
-  	} else {
-  		target.hp = target.hp - 20;
-  	}
+
+  this.powerAttack = function(target) {
+  		target.hp = target.hp - 30;
+  }
+
+  this.addHealth = function(player) {
+    if (this.hp < 10) {  
+      this.hp = this.hp * 3;
+    
+    } else if (this.hp < 30) {
+      this.hp = this.hp + 10;
+  
+    } else if (this.hp < 45) {
+      this.hp = this.hp + 5;
+  
+    } else if (this.hp === 45){
+      return;
+    }
+  }
 }
 
-$('.choose-mario')
 
+function heMan () {
+  this.hp = 60;
+  
+  this.attack = function(target) {
+    target.hp = target.hp - 8;
+  }
 
-function heroCharacter (attack, block, heal) {
-  this.attack = attack;
-  this.block = block;
-  this.heal = heal;
+  this.powerAttack = function(target) {
+      target.hp = target.hp - 20;
+  }
+
+  this.addHealth = function(player) {
+    if (this.hp < 10) {
+      this.hp = this.hp * 2;
+  
+    } else if (this.hp < 30) {
+      this.hp = this.hp + 15;
+  
+    } else if (this.hp < 60) {
+      this.hp = this.hp + 2;
+  
+    } else if (this.hp === 60) {
+      return;
+    }
+  }
 }
 
 
-var wizard = new heroCharacter("throw fireball", "ward block", "drink potion");
-var elf = new heroCharacter("shoot arrow", "sheild", "eat cabbage");
-var warrior = new heroCharacter("use sword", "sheild", "drink mead");
+function orco () {
+  this.hp = 25;
+  
+  this.attack = function(target) {
+    target.hp = target.hp - 20;
+  }
 
-console.log(wizard);
-console.log(elf);
-console.log(warrior);
+  this.powerAttack = function(target) {
+    target.hp = target.hp - 40;
+  }
 
-
-
-function villianCharacter(attack, block, insult) {
-  this.insult = insult;
-  this.attack = attack;
-  this.block = block;
+  this.addHealth = function(player) {
+    if (this.hp < 10) {
+      this.hp = (this.hp * 2);
+  
+    } else if (this.hp === 25) {
+      return;
+    }
+  }
 }
 
-var darkElf = new villianCharacter("shoots arrow", "sheild", "yo mama joke");
-var giantSpider = new villianCharacter("poison bite", "web shield", "racial slur");
-var dragon = new villianCharacter("shoots fire breath", "tail block", "You call that a breath weapon?");
 
-console.log(darkElf);
-console.log(giantSpider);
-console.log(dragon);
+$('.choose-teela').click(function(){
+  player = new teela();
 
+  $('.choose-orco').slideToggle(500, function(){
+    $(this).remove();
+  });
 
+  $( '.choose-heman' ).slideToggle(500, function(){
+    $(this).remove();
+  });
 
-
-
-$(".delete").click(function() {
-   var sureDelete = confirm("Are you sure you to delete this?");
-   if (sureDelete === true) {
-      $(this).parent().parent().slideUp(300, function() { 
-         $(this).remove();
-      });
-   }
+  /*
+  $( '.choose-teela' ).delay(800).slideUp(500, function() {
+    $(this).parent().delay(1000).fadeOut( "slow", function() {
+      $(this).remove();
+    });
+  */
+  console.log(player);
 });
-//=========5 hours of googlings====
-$(".purchase").click(function() {
-   var buy = confirm("Are you sure you want to buy?");
-   if (buy === true) {
-      var index = $(this).data("index");
-      var url = glassItems[index].url;
-      window.open(url);
-   }
+
+  //renderEnemyInfo(enemy);
+ 
+
+
+$('.choose-orco').click(function(){
+  player = new orco();
+
+  $('.choose-teela').slideToggle(500, function(){
+    $(this).remove();
+  });
+
+
+  $( '.choose-heman' ).slideToggle(500, function(){
+    $(this).remove();
+  });
+  /*
+  $( '.choose-orco' ).delay(800).slideUp(500, function() {
+    $(this).parent().delay(1000).fadeOut( "slow", function() {
+      $(this).remove();
+    });
+  */
+  console.log(player);
 });
+
+
+  //renderEnemyInfo(enemy);
+ 
+
+
+$('.choose-heman').click(function(){
+  player = new heMan();
+
+  $('.choose-teela').slideToggle(500, function(){
+    $(this).remove();
+  });
+
+  $( '.choose-orco' ).slideToggle(500, function(){
+    $(this).remove();
+  });
+/*
+   $( '.choose-heman' ).delay(800).slideUp(500, function() {
+    $(this).parent().delay(1000).fadeOut( "slow", function() {
+      $(this).remove();
+    });
+*/
+//  $('body')append('.battle-menu', function(){
+//    $('.battle-menu').addClass('active');
+//  })
+ 
+
+   //renderEnemyInfo(enemy);
+  console.log(player);
+});
+
+
+/*
+function renderPlayerInfo (player) {
+
+  $('.player-info').html("Player has " + player.hp + "hp")
+  
+}
+*/
+ 
+
 
 /*
 
+function renderPlayerInfo (player) {
+  if (player === heMan) {
+    $('.battle-menu').append.html("<img src='images/heman.jpg'></img>");
+  } else if (player === teela) {
+    $('.battle-menu').append.html("<img src='images/teela.jpg'></img>");
+  } else {
+    $('.battle-menu').append.html("<img src='images/orco.jpg'></img>");
+  }
+})
+
+*/
+
+
+
+
+/*
 switch (expression) {
   case expression1:
     statements1
@@ -86,5 +195,25 @@ switch (expression) {
     statements_def
     [break;]
 }
+*/
+
+/* ======Tried to implement in script template========
+  <% if (player === teela) { %>
+                        <img class="teela" src="images/teela.jpg"></img>
+                    <% } else if (player === heMan) { %>
+                        <img class="heman" src="images/heman.jpg"></img>
+                    <% } else { %>
+                        <img class="orco" src="images/orco.jpg"></img>
+                    <% } %> 
+
+
+
+ <% if (villian === trapJaw) { %>
+                        <img src="images/Trapjaw.jpg"></img>
+                    <% } else if (villian === evilLyn) { %>
+                        <img src="images/evillyn.jpg"></img>
+                    <% } else { %>
+                        <img src="skeletor.jpg"></img>
+                    <% } %>
 */
 

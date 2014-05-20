@@ -88,6 +88,14 @@ $('.choose-teela').click(function(){
     $(this).remove();
   });
 
+  $('.player-choices').delay(1000).fadeOut( "slow", function(){
+    $(this).remove();
+  });
+
+    setTimeout(function(){
+       $('.battle-menu').fadeIn().addClass('active');
+   }, 2000);
+
   /*
   $( '.choose-teela' ).delay(800).slideUp(500, function() {
     $(this).parent().delay(1000).fadeOut( "slow", function() {
@@ -112,6 +120,14 @@ $('.choose-orco').click(function(){
   $( '.choose-heman' ).slideToggle(500, function(){
     $(this).remove();
   });
+  $('.player-choices').delay(1000).fadeOut( "slow", function(){
+    $(this).remove();
+  });
+
+  setTimeout(function(){
+       $('.battle-menu').fadeIn().addClass('active');
+   }, 2000);
+
   /*
   $( '.choose-orco' ).delay(800).slideUp(500, function() {
     $(this).parent().delay(1000).fadeOut( "slow", function() {
@@ -136,19 +152,24 @@ $('.choose-heman').click(function(){
   $( '.choose-orco' ).slideToggle(500, function(){
     $(this).remove();
   });
-/*
+  $('.player-choices').delay(1000).fadeOut( "slow", function(){
+    $(this).remove();
+  });
+
+  setTimeout(function(){
+       $('.battle-menu').fadeIn().addClass('active');
+   }, 2000);
+
+  /*
    $( '.choose-heman' ).delay(800).slideUp(500, function() {
     $(this).parent().delay(1000).fadeOut( "slow", function() {
       $(this).remove();
     });
 */
-//  $('body')append('.battle-menu', function(){
-//    $('.battle-menu').addClass('active');
-//  })
  
 
    //renderEnemyInfo(enemy);
-  console.log(player);
+ // console.log(player);
 });
 
 
